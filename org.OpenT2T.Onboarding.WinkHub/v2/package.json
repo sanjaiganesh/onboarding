@@ -1,0 +1,48 @@
+{
+  "name": "opent2t-onboarding-winkhub",
+  "version": "1.0.0",
+  "description": "Wink Hub onboarding module for Open Translators to Things",
+  "author": "OpenT2T",
+  "license": "MIT",
+  "scripts": {
+    "test": "ava"
+  },
+  "ava": {
+    "files": [
+      "tests/*.js",
+      "!tests/testdirect.js"
+    ]
+  },
+  "dependencies": {
+    "inquirer": "",
+    "opent2t": "*",
+    "q": ""
+  },
+  "devDependencies": {
+    "jshint": "^2.9.2",
+    "assert": "^1.4.1"
+  },
+  "opent2t": {
+    "interfaces": {
+      "winkhub": {
+        "description": "OpenT2T SuperPopular Hub interface"
+      }
+    },
+    "translators": {
+      "winkhubtranslator": {
+        "description": "OpenT2T Wink Hub translator",
+        "interfaces": [
+          "./thermostat"
+        ]
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openT2T/onboarding.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openT2T/onboarding/issues"
+  },
+  "homepage": "https://github.com/openT2T/onboarding#readme"
+}
