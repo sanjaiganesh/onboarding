@@ -7,7 +7,7 @@
 "use strict";
 var https = require('https');
 var q = require('q');
-var deviceInfo = require('../../org.OpenT2T.Onboarding.Hub/OpenT2Tdevice');
+var deviceInfo = require('opent2t-onboarding-hub').deviceInfo;
 
 /**
 * This translator class implements the "Hub" interface.
@@ -102,6 +102,7 @@ class winkHubTranslator {
                                     device.light_bulb_id,
                                     device.hub_id,
                                     device.model_name,
+                                    device.last_reading.firmware_version,
                                     device.device_manufacturer,
                                     device.location,
                                     device.lat_lng,
@@ -147,5 +148,7 @@ class winkHubTranslator {
     }
 }
 
-// Export the translator from the module.
-module.exports = winkHubTranslator;
+module.exports.winkHubTranslator = winkHubTranslator;
+var winkonboarding = require("./winkonboarding");
+module.exports.onboardingFlow = winkonboarding.onboardingFlow;
+module.exports.onboard = winkonboarding.onboard;

@@ -5,8 +5,8 @@
 var https = require('https');
 var inquirer = require('inquirer');
 var q = require('q');
-var hubDevice = require('./WinkHub');
-var accessTokenInfo = require('../../org.OpenT2T.Onboarding.Hub/opent2tonboarding');
+var  accessTokenInfo = require('opent2t-onboarding-hub'). accessTokenInfo;
+
 
 // module exports, implementing the schema
 module.exports = {

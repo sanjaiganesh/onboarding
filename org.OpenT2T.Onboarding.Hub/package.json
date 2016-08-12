@@ -1,0 +1,20 @@
+{
+  "name": "opent2t-onboarding-hub",
+  "version": "1.0.0",
+  "description": "Hub schema and helper modules for Open Translators to Things",
+  "author": "OpenT2T",
+  "license": "MIT",
+  "main": "opent2tonboarding.js",
+  "files": [
+    "opent2tonboarding.js",
+    "package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openT2T/onboarding.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openT2T/onboarding/issues"
+  },
+  "homepage": "https://github.com/openT2T/onboarding#readme"
+}
