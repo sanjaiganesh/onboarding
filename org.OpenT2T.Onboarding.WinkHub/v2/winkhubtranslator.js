@@ -95,20 +95,56 @@ class winkHubTranslator {
                         // Apply the id key filter
                         var filteredDevices = [];
                         devices.forEach(function(device) {
-                            if(!!device[idKeyFilter])
+                            if(device.pairing_mode !== undefined &&  // Skip hub itself. Only hub's have pairing_mode property. (WINK specific, of course!)
+                                ((idKeyFilter === undefined) || 
+                                !!device[idKeyFilter]))
                             {
+                                var deviceId = device.light_bulb_id ||
+                                    device.air_conditioner_id ||
+                                    device.binary_switch_id ||
+                                    device.shade_id ||
+                                    device.camera_id ||
+                                    device.doorbell_id ||
+                                    device.eggtray_id ||
+                                    device.garage_door_id ||
+                                    device.cloud_clock_id ||
+                                    device.lock_id ||
+                                    device.dial_id ||
+                                    device.alarm_id ||
+                                    device.power_strip_id ||
+                                    device.outlet_id ||
+                                    device.piggy_bank_id ||
+                                    device.deposit_id ||
+                                    device.refrigerator_id ||
+                                    device.propane_tank_id ||
+                                    device.remote_id ||
+                                    device.sensor_pod_id ||
+                                    device.siren_id ||
+                                    device.smoke_detector_id ||
+                                    device.sprinkler_id ||
+                                    device.thermostat_id ||
+                                    device.water_heater_id ||
+                                    device.scene_id ||
+                                    device.condition_id ||
+                                    device.robot_id;
+
+                                // PubNub Subscription data
+                                var isPubNubPropertyPresent = (!!device.subscription && !!device.subscription.pubnub);
+                                var subscriptionKey = isPubNubPropertyPresent ? device.subscription.pubnub['subscribe_key'] : undefined; 
+                                var subscriptionChannel = isPubNubPropertyPresent ? device.subscription.pubnub['channel'] : undefined;
+
                                 filteredDevices.push(new deviceInfo(
                                     device.name,
-                                    device.light_bulb_id,
+                                    deviceId,
                                     device.hub_id,
                                     device.model_name,
-                                    device.last_reading.firmware_version,
+                                    !!device.last_reading ? device.last_reading.firmware_version : undefined,
                                     device.device_manufacturer,
                                     device.location,
                                     device.lat_lng,
                                     device.radio_type,
-                                    device.subscription.pubnub['subscribe_key'],
-                                    device.subscription.pubnub['channel']
+                                    subscriptionKey,
+                                    subscriptionChannel
                                     ));
                             }
                         });
