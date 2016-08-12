@@ -18,10 +18,12 @@ class accessTokenInfo {
     }
 }
 
+// Consumers must be aware and handle the case that not all properties are available all the time & for all devices. (check for 'undefined')
 class deviceInfo{
     constructor(
             name,
             id,
+            globalId, // Globally unique ID, since 'id' can be re-purposed/changed in some of the implementations (ex: Wink). Can be GUID or any. 
             hubId,
             modelName,
             firmwareVersion,
@@ -35,6 +37,7 @@ class deviceInfo{
     {
         this.name = name;
         this.id = id;
+        this.globalId = globalId;
         this.hubId = hubId;
         this.modelName = modelName;
         this.firmwareVersion = firmwareVersion;

@@ -46,12 +46,6 @@ class winkHubTranslator {
 
     // TODO: If possible, this must implement caching mechanism and get data from the serveer only if new data available.
     _makeRequest(url, path, accessToken, idKeyFilter, returnRawBody, method, content) {
-        console.log("-------------------------");
-        console.log("method             : " + method);
-        console.log("url                : " + url);
-        console.log("path               : " + path);
-        console.log("accessToken      : " + accessToken);
-
         var deferred = q.defer();
 
         var requestOptions = {
@@ -95,7 +89,7 @@ class winkHubTranslator {
                         // Apply the id key filter
                         var filteredDevices = [];
                         devices.forEach(function(device) {
-                            if(device.pairing_mode !== undefined &&  // Skip hub itself. Only hub's have pairing_mode property. (WINK specific, of course!)
+                            if((device.model_name !== 'HUB')  &&  // Skip hub itself. (WINK specific check, of course!)
                                 ((idKeyFilter === undefined) || 
                                 !!device[idKeyFilter]))
                             {
@@ -136,6 +130,7 @@ class winkHubTranslator {
                                 filteredDevices.push(new deviceInfo(
                                     device.name,
                                     deviceId,
+                                    device.uuid,
                                     device.hub_id,
                                     device.model_name,
                                     !!device.last_reading ? device.last_reading.firmware_version : undefined,

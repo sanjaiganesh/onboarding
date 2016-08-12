@@ -49,19 +49,36 @@ function createHubAndEnumerate() {
     
         var winkHubTranslator = require("opent2t-onboarding-winkhub-v2").winkHubTranslator;
         var hub = new winkHubTranslator(tokenInfo.accessToken);
+
         hub.getDevicesAsync('light_bulb_id').then(function(deviceList){
+            console.log("Test - 1 : Filtering for light bulb");
+            console.log("---------------------");
+
             // Validate device list
             assert(deviceList);
             assert(deviceList.length);
             console.log("Number of devices: " + deviceList.length);
             deviceList.forEach(function(device){
                 // Validate couple of members
-                assert(device.name);
-                assert(device.id);
+                console.log("Device Name: " + device.name);
+                console.log("Device Id: " + device.id);
+            });
+        }).then(() => {
+            hub.getDevicesAsync().then(function(deviceList){
+                console.log("-------");
+                console.log("");
+                console.log("Test - 2 : Get all the devices");
+                console.log("---------------------");
 
-                console.log(device);
-                console.log("Device Name" + device.name);
-                console.log("Device Id" + device.id);
+                // Validate device list
+                assert(deviceList);
+                assert(deviceList.length);
+                console.log("Number of devices: " + deviceList.length);
+                deviceList.forEach(function(device){
+                    // Validate couple of members
+                    console.log("Device Name: " + device.name);
+                    console.log("Device Id: " + device.id);
+                });
             });
         });
     }).catch(error => {
