@@ -179,7 +179,7 @@ class winkHubTranslator {
     }
 }
 
-module.exports.winkHubTranslator = winkHubTranslator;
-var winkonboarding = require("./winkonboarding");
-module.exports.onboardingFlow = winkonboarding.onboardingFlow;
-module.exports.onboard = winkonboarding.onboard;
+module.exports = winkHubTranslator;
+// var winkonboarding = require("./winkonboarding");
+// module.exports.onboardingFlow = winkonboarding.onboardingFlow;
+// module.exports.onboard = winkonboarding.onboard;
