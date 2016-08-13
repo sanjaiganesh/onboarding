@@ -9,8 +9,7 @@
   },
   "ava": {
     "files": [
-      "tests/*.js",
-      "!tests/testdirect.js"
+      "tests/testreflection.js"
     ]
   },
   "dependencies": {
@@ -20,10 +19,12 @@
   },
   "devDependencies": {
     "jshint": "^2.9.2",
-    "assert": "^1.4.1"
+    "assert": "^1.4.1",
+    "ava": "^0.15.2"
   },
-  "main": "winkhubtranslator.js",
+  "main": "index.js",
   "files": [
+    "index.js",
     "winkonboarding.js",
     "winkhubtranslator.js",
     "winkhub.js",

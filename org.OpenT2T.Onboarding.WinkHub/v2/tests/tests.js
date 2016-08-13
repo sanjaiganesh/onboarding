@@ -18,7 +18,7 @@ function getUserInput(inputNeeded) {
 function doOnboarding() {
     var deferred = q.defer();
 
-    var winkOnboarding = require("opent2t-onboarding-winkhub-v2");
+    var winkOnboarding = require("../winkOnboarding");
     var promises = []; 
 
     for (var i = 0; i < winkOnboarding.onboardingFlow.length; i++) {
@@ -47,7 +47,7 @@ function createHubAndEnumerate() {
         console.log(tokenInfo.accessToken);
         console.log(tokenInfo);
     
-        var winkHubTranslator = require("opent2t-onboarding-winkhub-v2").winkHubTranslator;
+        var winkHubTranslator = require("../winkHubTranslator");
         var hub = new winkHubTranslator(tokenInfo.accessToken);
 
         hub.getDevicesAsync('light_bulb_id').then(function(deviceList){
